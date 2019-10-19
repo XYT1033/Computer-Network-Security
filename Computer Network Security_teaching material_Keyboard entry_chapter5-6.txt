@@ -1,0 +1,21 @@
+
+
+
+5.1   入侵检测概述 
+
+
+	入侵检测技术研究最早可追溯到1980年 james p.aderson 提出的一份技术报告，他首先提出了入侵检测的概念，并将入侵尝试(Instruion attempt) 或威胁(Threat)
+	定义为： 潜在的、有预谋的、未经授权的访问信息和操作信息，致使系统不可靠或无法使用的企图。aderson 在报告中提出，审计追踪可应用于监视入侵威胁，但由于当时
+	已有的系统安全程序全都着重与拒绝未经认证主机对重要数据的访问，这一设想的重要性并未被理解。1987年，Dorothy denning 提出了入侵检测系统 (Instruion detection system , ids )
+	的抽象模型，首次提出了入侵检测可作为一种计算机系统安全防御措施的概念，与传统的加密和访问控制技术相比，IDS是全新的计算机安全措施。  
+	
+	
+	
+	  1988 年的 morris internet 蠕虫事件使 Internet 近五天无法使用，该事件的发生加速了人们对安全的需求，进而引发了自20世纪80年代以来入侵检测系统的开发研制热潮，
+	  但早期的IDS 系统都是基于主机的应用，也即通过监视与分析主机的审计记录来检测入侵。1988年，Teresa Lunt等人进一步改进了Denning 提出的入侵检测模型，创建了 IDES (intrusion 
+	  detection expert system ),该系统用于检测单一主机的入侵尝试，提出了与系统平台无关的实时检测思想，1995年开发的NIDES（Next-Generation Instruion Detection 
+	  Expert System） 作为 IDES 完善后的版本可以检测出多个主机上的入侵。
+	  
+		
+		
+		to 147  under 
