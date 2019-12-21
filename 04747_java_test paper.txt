@@ -1,0 +1,42 @@
+
+
+
+
+ 1、 java主要包含标准版(J2SE)、面向高性能企业计算的版本(J2EE)和面向高性能移动计算的版本(J2ME)  
+ 
+ 
+ 
+ 2、安装JDK后，jdk目录下的\bin目录下主要开发工具不包含
+ B.java 
+ c.jvm 
+ d.javadoc 
+ 
+ 
+ 答： C   解析： \bin目录下主要的开发工具有 javac、java/jdb/javap/javadoc  
+ 
+ 
+ 
+ 3/ java.c 是java 的编译器，用来将java程序编译成字节码。 
+ java.exe 是java的解释器，执行已经转换成字节码的java程序。  jdk和jre与javac.exe 
+ 、java.exe 不是一个层次的概念，jdk是java开发工具集，jre是java运行时环境，都包含javac.exe和 java.exe  
+ 
+ 
+ 
+ 
+ 4/ 在java中，标识符是由字母、数字、下划线、美元符($)组成的字符串，像@、#等特殊符号是不能用于命名标识符的。 
+ 
+ 
+ 
+ 
+ 
+ 
+ 6、java基本数据类型共有8种，分别为byte、short、int 、long  、float 、double 、char 、 boolean 
+ 
+ 
+ 7、  运算优先级最高的是 ：new 
+ 
+ 
+ 
+ 8 / 
+ 
+ 
