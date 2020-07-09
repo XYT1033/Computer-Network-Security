@@ -311,7 +311,104 @@ public class j1{
 
 
 
+36. 阅读下面程序片段，请回答以下问题：
 
+
+
+package xyt;
+
+
+import java.util.Scanner;
+
+public class j1{
+    void test(){
+        char c='a';
+        switch (c){
+            case 'a': System.out.println("这是一个字母");break;
+            case 'b': System.out.println("这是一个数字");break;
+            case 'c': System.out.println("这是一个空格");break;
+            default: System.out.println("这是一个特殊符号");break;
+
+        }
+    }
+
+    public static void main(String[]  args){
+        j1 j= new j1();
+         j.test(); //  这是一个字母
+        
+    }
+
+
+}
+
+
+
+
+
+1。 该程序有几个分支
+ 答：   4个 
+ 
+ 2. 若 c='@' 程序会输出什么结果 
+   答：    输出结果是： 这是一个特殊符号  
+   
+   
+   
+   
+   
+   37.  现有整形变量 a、b、d,  a、b 的值依次为2、9 ,    浮点数变量c 的值为1.6 。   
+   编写程序计算如下式子： d=a*b-c  。 
+ 
+        int a,b,d;
+        double c;
+        a=2;
+        b=9;
+        c=1.6;
+        d=(int)(a*b -c);
+
+      
+   
+   38. 将下列语句转换为java代码：
+   1、 如果 b1 为真， 打印"one", 否则打印"two".
+   
+       if(b1){
+           System.out.println("one");
+       }
+       else
+       {
+           System.out.println("two");
+       }
+ 
+
+  2. 如果  b1 为假并且 b2 为真， 打印"one", 否则打印"two".
+   
+    if(b1 ==false && b2  ){
+           System.out.println("one");
+       }
+       else
+       {
+           System.out.println("two");
+       }
+ 
+   
+   3. 如果  b1 为假 并且如果 b2 为真则打印"one" ；  如果 b1 、b2 都为假则打印 "two" ； 其他情况打印 "three". 
+   
+       if(b1 ==false && b2  ){
+           System.out.println("one");
+       }
+       else if(b1 == false  && b2== false)
+       {
+           System.out.println("two");
+       }
+		else 
+       {
+           System.out.println("three");
+       }
+   
+   
+   
+ 
+ 
+ 
 
 
 
