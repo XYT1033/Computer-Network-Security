@@ -777,6 +777,165 @@ int   main()
 
 
 
+单元综合测试(三)
+
+
+ 程序分析题  将输出结果写出来 。
+ 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+ 26.  
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main()
+{
+	int a, b, k = 4, m = 6, * p1 = &k, * p2 = &m;
+	a = (p1==p2);
+	b = (*p1) / (*p2) + 7;
+
+
+	printf("a=%d,b=%d\n", a,b);
+	
+
+	
+	system("pause");//xyt
+}
+
+
+ 
+答：  a=0,b=7
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+
+27 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main()
+{
+	static char a[] = "ABCDEFGH", b[] = "aBcDeFgH";
+	char* p1 = a, * p2 = b;
+	while (*p1 != '\0')
+	{
+		if (*p1 == *p2)
+			printf("%c",*p2);
+		p1++, p2++;
+	}
+
+
+	
+	system("pause");//xyt
+}
+
+
+答： BDFH
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+
+28. 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+struct stu
+{
+	int num;
+	char name[10];
+	int age;
+
+};
+void py(struct stu* p)
+{
+	printf("%s\n",(*p).name);
+}
+
+int   main()
+{
+	struct stu student[3] = {
+		{1001,"Sun",25},
+		{1002,"Ling",23},
+		{1003,"Shen",22}
+	};
+	py(student +2);
+
+	
+	system("pause");//xyt
+}
+
+
+
+
+
+
+答： Shen
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+29. 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+
+int   main()
+{
+	FILE* fp;
+	int i, x[5] = {1,2,3,4,5};
+	fp = fopen("text.dat","w+");
+	for (i = 0;i < 5;i++)
+		fprintf(fp,"%d\n",x[i]);
+	rewind(fp);
+	for (i = 0;i < 5;i++)
+		fscanf(fp,"%d",&x[4-i]);
+
+	fclose(fp);
+	for (i = 0;i < 5;i++)
+		printf("%d",x[i]);
+
+	
+	system("pause");//xyt
+}
+
+
+
+答：54321
 
 
 
@@ -792,6 +951,212 @@ int   main()
 
 
 
+程序填充题  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+30. 
+
+
+
+ // 以下程序的功能是从键盘上输入若干字符(以回车键作为结束)组成一个字符串存入一个字符数组，然后输出该字符数组中的字符串。 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main()
+{
+	
+	char str[51], * sptr;
+	int i;
+	for (i = 0;i < 50;i++)
+	{
+		str[i] = getchar();
+		if (str[i] == '\n')
+		break	;//
+	}
+	str[i] = '\0';//
+	sptr = str;
+	while (*sptr)putchar(*sptr ++); //
+	
+	system("pause");//xyt
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+31.   
+ 
+ 
+ //将20名学生的姓名和成绩由键盘输入，计算并输出平均成绩。
+ 
+ 
+ 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+#define N 20
+
+struct student
+{
+	char name[20];
+	float score;
+};
+
+int   main()
+{
+	struct student s[N];
+	int i;
+	float average = 0;//
+	for (i = 0;i < N;i++)
+	{
+		scanf("%s%f",s[i].name,&s[i].score);
+		average += s[i].score ;  //
+	}
+	average = average/N; //
+	printf("average=%7.2f\n",average);
+	
+	system("pause");//xyt
+}
+
+ 
+ 
+ 
+ 上面的总要键盘输入，beneath i reform 
+ 
+ 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+#define N 20
+
+struct student
+{
+	char name[20];
+	float score;
+};
+
+int   main()
+{
+	struct student s[N] = {
+		{"xyt",30},
+		{"xyt1",67},
+		{"xyt2",66},
+		{"xyt3",100},
+		{"xyt4",45},
+		{"xyt5",100},
+		{"xyt6",54},
+		{"xyt7",100},
+		{"xyt8",87},
+		{"xyt9",100},
+		{"xyt10",54},
+		{"xyt11",100},
+		{"xyt12",100},
+		{"xyt13",100},
+		{"xyt14",100},
+		{"xyt15",100},
+		{"xyt16",100},
+		{"xyt17",100},
+		{"xyt18",100},
+		{"xyt10",100}
+	};
+	int i;
+	float average = 0;//
+	for (i = 0;i < N;i++)
+	{
+		//scanf("%s%f",s[i].name,&s[i].score);
+		average += s[i].score ;  //
+	}
+	average = average/N; //
+	printf("average=%7.2f\n",average);
+	
+	system("pause");//xyt
+}
+
+ 
+ 
+
+
+
+
+
+ 
+ //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 
+ 32. 将文本文件r.txt中的字符逐一读出并显示在屏幕上
+ 
+ 
+ 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+void   main()
+{
+	FILE* fp;
+	char ch;
+	if ((fp = fopen("D:\\1.txt", "r")) == NULL)   //
+	{
+		printf("can't open file!\n");exit(0);
+	}
+	printf("读文件并显示:\n");
+	while (!feof(fp)) // feof是C语言标准库函数，其原型在stdio.h中，其功能是检测流上的文件结束符，如果文件结束，则返回非0值，否则返回0（即，文件结束：返回非0值；文件未结束：返回0值）
+	{
+		ch = fgetc(fp);
+		printf("%c", ch);//
+	}
+	printf("\n");
+	fclose(fp);//
+
+	system("pause");//xyt
+}
+
+
+
+ 
+  
+ //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 33. 编写程序，用以建立某班级的学生档案信息，每个学生档案信息包括：姓名、邮编、电话。
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	struct student
+	{
+		char name[20];
+		unsigned long zipcode;
+		unsigned long phone;
+	};
+	struct student class1[50];
+	int i;
+	for (int i = 0; i < 50; i++)
+	{
+		printf("第%d个学生的信息:\n",i+1);
+		printf("name:");
+		gets(class1[i].name);
+		printf("zipcode:");
+		scanf("%u",&class1[i].zipcode);
+		printf("phone number:");
+		scanf("%u", &class1[i].phone);
+	}
+
+	system("pause");//xyt
+}
 
 
 
@@ -802,4 +1167,75 @@ int   main()
 
 
 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  34. 从文本文件 1.txt 读取字符，将其中的英文字母 'a'、'b'、'c'、'd'和'e'分别替换为'+'、'-'、'*'、'/'和'%',
+  其余字符不变，然后写入文本文件 2.txt 
+  
+  
+  #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+void   main()
+{
+	FILE* fp1, * fp2;
+	char c;
+	if ((fp1 = fopen("D:\\1.txt", "r")) == NULL)
+	{
+		printf("error\n");
+		exit(0);
+	}
+	if ((fp2 = fopen("D:\\2.txt", "w")) == NULL)
+	{
+		printf("error\n");
+		exit(0);
+	}
+	while (!feof(fp1))
+	{
+		c = fgetc(fp1); // 函数功能： 将字符c写到文件指针fp所指向的文件的当前写指针的位置。函数格式：int fputc (int c, FILE *fp)。
+		switch (c)
+		{
+		case 'a':fputc('+', fp2);
+			break;
+		case 'b':fputc('-', fp2);
+			break;
+		case 'c':fputc('*', fp2);
+			break;
+		case 'd':fputc('/', fp2);
+			break;
+		case 'e':fputc('%', fp2);
+			break;
+		default:
+			fputc(c,fp2);
+			break;
+		}
+	}
+	fclose(fp1);
+	fclose(fp2);
+
+	system("pause");//xyt
+}
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
 
