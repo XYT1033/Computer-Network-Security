@@ -1224,18 +1224,735 @@ void   main()
   
   
   
+   全真模拟演练(一)
+  
+  程序分析题  写出输出结果 
+  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+// 26
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void   main()
+{
+	int i;
+	for (  i = 10; i >=1; i--)
+	{
+		if (i <= 5)break;
+		printf("%3d",i);
+	}
+	printf("\n");
+
+	system("pause");//xyt
+}
+
+
+
   
   
+  答： 10  9  8  7  6
   
   
-  
-  
-  
-  
-  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //27 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+int x = 1;
+int fx(int p)
+{
+	x += p++;
+	return p;
+}
+void   main()
+{
+	
+	int y = 1;
+	x++;
+	printf("x=%d,fx=%d\n",x,fx(y));
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+答：  x=3,fx=2
+ 
+ 
  
  
  
  
  
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //28
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+void   main()
+{
+	int i;
+	char* country[] = {"Brazil","Russia","India","China","SouthAfrica"};
+	for ( i = 0; i < 4; i+=2)
+		printf("%s\n",country[i]);
+
+	system("pause");//xyt
+}
+
+
+ 
+ 答： 
+ Brazil
+India
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //29
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+struct node
+{
+	char name[20];
+	int age;
+
+};
+
+void fun1(struct node s)
+{
+	struct node n = {"zhangsan",23};
+	s = n;
+}
+void fun2(struct node *t)
+{
+	struct node n = { "lisi",24 };
+	*t = n;
+}
+
+void   main()
+{
+	struct node stu1 = { "wangwu",25 }, stu2 = {"zhaoliu",26};
+	fun1(stu1);
+	fun2(&stu2);
+	printf("%d,%d\n",stu1.age,stu2.age);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 答： 25,24
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 程序填充题 
+  
+     
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //30   下面程序实现输出2个字符串对应位置相等的字符 
+ 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+//https://zhidao.baidu.com/question/1302680460407818179.html
+// C 语言 '\0'     '\0' 是字符串的结束符，任何字符串之后du都会自动加上'\0'。如果字符串末尾少了‘zhi\0’转义字符，则其在输出时可dao能会出现乱码问题。
+
+void   main()
+{
+	char a[] = "helloworld", b[] = "helloC";
+	int i = 0;
+	while (a[i] != '\0' && b[i] != '\0') //
+		if (a[i] == b[i])
+			printf("%c", a[i++]); //
+		else
+			i++;//
+
+
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //31      以下程序的功能是将无符号八进制数字构成的字符串转换为十进制整数  
+ 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<string.h>
+
+
+void   main()
+{
+	char s[6], * p = s;//
+	int n;
+	gets(p);
+	n = *p - '0';//
+	while (*++p != '\0')
+		n = n * 8 + *p - '0';
+	printf("%d\n",n);
+
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ //32      下列函数的主要功能是从形参 fp 指向的文件中读取形参 n-1 个字符(或读到字符'\n',或遇到文件尾,)补充字符串结束标记符组成字符串，存入形参 str 指向的内存。 
+ 
+ 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<string.h>
+
+
+void f(char* st, int n, FILE* fp)
+{
+	int k;
+	for (k = 0; k < n-1; k++)
+	{
+		if (feof(fp)) break;
+			*(st + k) = fgetc(fp);  //
+		if (*(st + k) == '\n')
+		{
+			k++; //
+			break;
+		}
+	}
+	*(st+k) ='\0';  //
+	return;
+}
+
+void   main()
+{
+	
+	FILE* fp; // 文件指针
+	fp = fopen("D:\\1.txt", "w+"); // 打开文件\
+
+	char a[] = "ABCDEFGH";
+	char* p = a;
+	f(p, 12,  fp);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 程序设计题  
+ 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 33. 利用循环嵌套输出以下图形 
+ 
+          1
+        1 2 1 
+      1 2 3 2 1
+    1 2 3 4 3 2 1 
+  1 2 3 4 5 4 3 2 1 
+ 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void   main()
+{
+	int i, j;
+	for ( i = 0; i <= 5 ; i++)
+	{
+		for (j = 1;j <= 5 - i;j++) 
+			printf("  ");
+		for (j = 1;j <= i;j++)
+			printf("%2d",j);
+		for (j = i - 1;j >= 1;j--)
+			printf("%2d",j);
+		printf("\n");
+	}
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+  
+  
+  
+    //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+	34. 在主函数中输入不同大小的实型数组，计算数组中元素的平均值。
+	
+	
+	
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+float average(float array[]  , int n)
+{
+	int i;
+	float sum = 0, av;
+	for (i = 0;i < n;i++)
+		sum = sum + array[i];
+	av = sum / n;
+	return av;
+}
+void   main()
+{
+	int i;
+	float score1[6], score2[10], ave;
+	printf("please input 6 scores for score1:");
+	for (i = 0;i < 6;i++)
+		scanf("%f", &score1[i]);
+		ave = average(score1,6);
+	printf("average score is %5.2f\n",ave);
+	printf("please input 10 scores for score2:");
+	for (i = 0;i < 10;i++)
+		scanf("%f", &score2[i]);
+	ave = average(score2, 10);
+	printf("average score2 is %5.2f\n", ave);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 全真模拟演练(二)
+    
+  请写出输出结果 
+  
+    
+    //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  26 
+  
+  
+  
+  #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int n, k = 0;
+	for ( n = 0; n < 20; n++)
+	{
+		k = 0;
+		while (k<=n)
+		{
+			if (n == 5 * k)
+				printf("%d,", n);
+			k++;
+		}
+	}
+
+	system("pause");//xyt
+}
+
+
+答：  0,5,10,15, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+	27 。   
+	  
+	  
+	  #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+func(int y)
+{
+	static int x = 0;
+	x += y;
+	printf("%d,",x);
+}
+
+void   main()
+{
+	int a = 5;
+	func(a);
+	func(a);
+
+	system("pause");//xyt
+}
+
+ 
+	  
+	答：   5,10,
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+  
+  
+  
+  
+  
+     
+  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+28 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+void   main()
+{
+	int i, a[5], * p = &a[3];
+	for (i = 0;i < 5;i++)
+		scanf("%d,",&a[i]); //输入 2,3,4,5,6 回车
+	for (;p >= a;p--)
+		printf("%d\n",*p);
+
+	system("pause");//xyt
+}
+
+
+
+答：
+5
+4
+3
+2
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+29 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+void   main()
+{
+	FILE* fp;
+	char s[10];
+	fp = fopen("d:\\1.txt","w");
+	fputs("welcome",fp);
+	fclose(fp);
+	fp = fopen("d:\\1.txt","a+");
+	fprintf(fp,"%d",55);
+	rewind(fp); // rewind 将文件内部的位置指针重新指向一个流（数据流/文件）的开头  例如：从键盘输入一行字符，追加写入到一个文件中，再把该文件内容读出显示在屏幕上
+	fscanf(fp,"%s",s);
+	puts(s); // 前面在输出字符串时都使用printf，通过“%s”输出字符串。其实还有更简单的方法，就是使用 puts() 函数。该函数的原型为：
+	fclose(fp);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+答： welcome55 
+
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 程序填空题 
+ //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 30.  以下程序不借助任何变量， 把 x、y 种的值进行交换 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+void   main()
+{
+	int x, y;
+	printf("Input x,y:");
+	scanf("%d%d",&x, &y);//
+	x += y;
+	y = x - y;
+	x -= y;
+	printf("x=%d,y=%d\n",x,y);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 31.  下列程序的主要功能是输入字符串数组 m ,然后复制到数组 n 中并输出  
+ 
+ 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+void   main()
+{
+	char m[20], n[20];
+	int k=0; //
+	scanf("%s",m);//
+	while ( (n[k]=m[k])!='\0' ) //
+		k++;
+
+	printf("%s\n",n);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  32  输入三个国家的名称，按字母顺序排序后输出  
+  
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<string.h>
+
+
+void   main()
+{
+	char* s[] = {"Chain","America","Russia"},*p;   
+	int i, j, k = 3;
+	for(i=0;i<k-1;i++)
+    for(j=0;j<k-1-i;j++) //
+		if (strcmp(s[j], s[j + 1]) > 0) // C语言strcmp()函数：比较两个字符串
+		{
+			p = s[j];
+			s[j] = s[j+1]; //
+			s[j + 1] = p;
+		}
+	for (i = 0;i < k;i++)
+		printf("%s\n",s[i]);
+
+	system("pause");//xyt
+}
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 程序设计题 
+  //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  
+ 33.  任意输入一个三位正整数，若个位和百位上的数字相等称为"回文数"(如121) ,则输出"Yes",否则输出"No" 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int num, a, b;
+	scanf("%d", &num);
+	printf("%d\n", num);
+	if (num < 100 || num>999)
+		printf("Input Error! \n");
+	else
+	{
+		a = num % 10;
+		b = num / 100;
+		if (a == b)printf("Yes\n");
+		else printf("No\n");
+	}
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  
+ 34   输入一个一维整型数组，输出最大值，最小值和平均值(要求用指向一维字符数组的指针变量来处理数组元素 )
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int a[20], * p = a, i, max, min, av = 0;
+	for ( i = 0; i < 20; i++,p++)
+	{
+		scanf("%d",p);//22 18 3 4 21 34 32 12 43 56 234 2 43 53 45 65 33 23 457 76 
+		if (i==0)
+		{
+			max = *p;
+			min = *p;
+		}
+		if (max < *p)
+			max = *p;
+		else if (min > * p)
+			min = *p;
+		av = av + *p;
+	}
+	av = av / 20;
+	printf("max=%d,min=%d,av=%d",max,min,av);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 

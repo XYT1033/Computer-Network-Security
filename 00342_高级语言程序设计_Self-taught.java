@@ -605,12 +605,316 @@ D。  运算结合性是自右向左
 
 
 
+13.设有下列数据定义语句，则表达式 sizeof(abc)的值是：     7 
+struct {char a;short b;float c;}abc;
+
+解析： char a 占 1个字节     short b 占 2个字节     float 占 7个字节  
+
+
+
+
+15。  用户可以用 FILE 定义结构体类型的指针变量，即称为"文件型指针"
+
+
+
+16. 将高级语言编写的源程序边解释边执行的程序称为： 解释程序 
+
+17. 结构化程序由3种基本结构构成，在每一个模块内部以及模块与模块之间都有三种基本结构，
+分别是顺序、选择和循环  
+
+
+18 C 程序通常包括一个或多个函数，其中有且只有一个函数称为主函数，其函数名为： main  
+
+
+19 .  "&"   在位逻辑运算中表示双目的  ( 位逻辑与 )  运算  
+
+
+20.  设 i,j,k 均为int 型变量 ，则执行下面的for 循环后，k的值为：  10 
+   for(i=0,j=10;i<=j;i++,j--)
+	   k=i+j;
+
+
+
+   
+   
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+void   main()
+{
+	int i, j, k;
+	for (i = 0, j = 10;i <= j;i++, j--)
+		k = i + j;
+
+	system("pause");//xyt
+}
+
+
+
+
+21. break 语句可在循环或 ( switch )语句中使用  
+
+
+22 。  设 char s[20]="My";  , 则执行strcat(s,"Sun!")后s 的内容是： MySun!  
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+void   main()
+{
+	char s[20] = "My";
+	strcat(s, "Sun!");
+
+	system("pause");//xyt
+}
 
 
 
 
 
 
+23  .    函数中的形参和调用时的实参都是数组名时，传递方式为： 地址传递  
+
+
+24.  设 int a[10],  *p=a;    ,则对a[2]的引用可以是 p[2] 和 *p+2
+
+
+
+25.  设有语句 typeof float * F;   ,则数据定义语句 F x,y,z[2];    , 相当于数据定义语句：      float *x,*y,*z[2];
+
+
+
+
+
+
+
+
+
+
+
+
+ 全真模拟演练(二)
+  
+
+
+
+1. 计算机的组成部分包括输入设备、输出设备、存储器、运算部件和控制部件 
+
+
+
+3. 不属于C语言转移字符的是： 
+A。 \ 
+B .  \ddd 
+
+
+答：  A   转移字符由 “反斜杠符号\” 后跟单个字符或若干个字符构成。 
+
+
+
+
+
+4. 值为1的表达式是： 
+A。  3&4 
+C。   !!8
+D. 0! =0 
+
+
+答： C  !!8 的计算顺序相当于 !(!8) , 结果为1  
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int iu =(3 & 4) ;
+	int iu1 = !!8;
+	int iu2 = (0 != 0);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+5. 设 int a=4;b;   ,则执行 b=a<<1;   语句后，b 的结果是 
+
+  答： 8         "<<" 为左移运算符，移位时将运算对象以二进制形式进行移位，题中表达式表示将 a 左移1位， 0100 左移一位后所对应的十进制是8  
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int iu =(3 & 4) ;
+	int iu1 = !!8;
+	int iu2 = (0 != 0);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+6. 执行语句 for(k=3;++k<5;k++) ++k;   后，变量k的值是:  7   
+
+
+
+
+7.   执行以下程序输出结果是：    **0****2**
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int a = 1, b = 0;
+	switch (a)
+	{
+	case 1:
+		switch (b)
+		{
+		case 0:printf("**0**");
+		case 1:printf("**1**");
+			break;
+		}
+	case 2:printf("**2**");
+		break;
+	}
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+12.  以下程序输出的结果是：  50 
+  
+·
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int** k, * a, b = 50;
+	a = &b;
+	k = &a;
+	printf("%d\n",**k);
+	system("pause");//xyt
+}
+
+
+
+
+14. 使用系统函数 abs()时， 应在程序开头写上的编译预处理命令是：  #include<math.h>
+
+
+15. 系统标准输入设备的文件型指针是：  stdin  
+
+
+
+
+16. 解决问题的步骤序列就是： 算法  
+
+
+17. 面向对象的程序是由 类、对象(类的实例)和对象之间的动态联系组成的。 
+
+18. 编译程序将源程序转换为二进制形式的目标程序，其扩展名为：  obj 
+
+19. 常量可以有不同的类型，C语言规定常量包括 整型常量、实型常量、字符型常量、字符串常量和符号常量。 
+
+20. 执行语句 int x=1; while(x++ != 1);  后，变量x的值是：  2 
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int x = 1;
+	while (x++ != 1);
+
+	system("pause");//xyt
+}
+
+
+
+
+21. c语言中，数组名代表(数组所暂用内存空间的首地址) ，不能被赋值或自增。 
+
+22. 设 int a[2][5] = {{8},{4}};   ,则数组元素 a[1][0]  的值为4  
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int a[2][5] = { {8},{4} };
+
+	printf("%d", a[1][0]);
+
+	system("pause");//xyt
+}
+
+
+
+23. 函数间传递数据有4种方式： 值传递、地址传递、返回值 和全局变量传递 
+
+24. 设 int m,*q=&m; ,通过指针变量q为m输入值的scanf语句是：    scanf("%d",q);
+
+
+25,  设 
+struct S
+{
+	int a,b;
+	char c;
+	double d;
+	
+}; 
+则定义该结构体类型变量t的正确语句是：  struct S t; 
+
+
+
+
+
+
+
+
+
+
+
+
+  全真模拟演练(三) 
+  
+  
 
 
 
