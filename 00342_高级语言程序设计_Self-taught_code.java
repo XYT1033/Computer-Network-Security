@@ -1956,3 +1956,1437 @@ void   main()
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 全真模拟演练(三)
+ 写出输出结果
+    //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+  26. 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void   main()
+{
+	int i =0, s = 3;
+	do
+	{
+		s += i++;
+		if (s % 7 == 0)continue;
+		else ++i;
+	} while (s<15);
+	printf("%d",i);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 答： 8 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 27.
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int fun()
+{
+	int m = 1;
+	static int n = 2;
+	++m;
+	++n;
+	return(m+n);
+}
+
+void   main()
+{
+	int a, b;
+	a = fun();
+	b = fun();
+	printf("a=%d,b=%d\n",a,b);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 答： a=5,b=6
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 28.
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+void   main()
+{
+	int x[3][6] = { {1,2,3},{4,5,6},{7,8,9} } ,(*p)[6]=x,s=0,k;
+	for (k = 0;k < 6;k++)
+		s = s + *(*(p + 1) + k);
+	printf("%d\n",s);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 答： 15 
+ 
+ 
+ 
+ 
+ 
+   
+   
+   
+   
+   
+   
+   
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 29.
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define A 2
+#define B(x) A*X/2
+
+
+int   main(void)
+{
+	float c, a = 6;
+	c = B(a);
+	printf("%.1f\n",c);  //   c语言 %.1f   https://zhidao.baidu.com/question/1733661669908676507.html
+
+	system("pause");//xyt
+}
+
+
+
+ 答： 6 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    程序填充题
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 30.   键入一串字符，以回车换行符为结束标志，统计并输出其中小写英文字母的个数 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	char letter;
+	int sum = 0;//
+	while ((letter = getchar()) != '\n') //  abcdABCDEFGaa
+		if (letter >='a' && letter<='z')
+			sum++;
+	printf("小写英文字母个数sum=%d\n",sum); //
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+31. 函数f用于计算数组各元素值的平方，主函数调用 f 并输出各元素的值  
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void f(int a, int s[])
+{
+	int i;
+	for (i = 0;i < a;i++)  //
+		s[i] = s[i] * s[i];
+}
+
+int   main(void)
+{
+	int i, b[5] = {1,2,3,4,5};
+	f(5,b);//
+	for (i = 0;i < 5;i++)
+		printf("%5d",b[i]);  //
+	printf("\n");
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+32. 从键盘输入某个职工的工号、姓名和工资保存至结构体类型变量并输出 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+typedef struct employee
+{
+	int number;
+	char name[20];
+	float salary;
+}EMP;   //
+
+int   main(void)
+{
+	EMP em;
+	scanf("%d%s%f",&em.number, em.name,&em.salary);   // 12 徐益涛 9999
+	printf("Number:%d\nName:%s\nSalary:%.1f\n",em.number,em.name,em.salary);  //
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+程序设计题 
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+33.  设计一个程序，使用多层嵌套的 if-else 语句，其功能为： 输入一个字符，如果是数字，输出A； 如果是大写字母，
+输出B； 如果是小写字母，输出C；如果是其他符号，输出D 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	char c;
+	scanf("%c",&c);
+	if ('0' <= c && c <= '9')
+		printf("c=%c\n", 'A');
+	else if ('A' <= c && c <= 'Z')
+		printf("c=%c\n", 'B');
+	else if ('a' <= c && c <= 'z')
+		printf("c=%c\n", 'C');
+	else
+		printf("c=%c\n",'D');
+	
+	system("pause");//xyt
+}
+
+
+
+
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+34. 用当型循环结果实现并输出 1+2+3+...+50的和。 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	long sum = 0, i;
+	i = 1;
+	while (i < 51)
+		sum += i++;
+	printf("sum=%d\n",sum);
+	
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+全真模拟演练（四） 
+
+
+写出输出结果
+
+
+
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+26 。	 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	int i = 1, j = 4, k = 7;
+	do
+	{
+		if(i%j==0)
+		if (i%k==0)
+		{
+			printf("%d\n",i);
+			break;
+		}
+		i++;
+	} while (i!=0);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+答： 28
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 27 
+ 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void f(int x, int y)
+{
+	x = x + y;
+	y = x - y;
+	x = x - y;
+	printf("%d,%d,",x,y);
+
+}
+
+int   main(void)
+{
+	int a = 1, b = 2;
+	f(a,b);
+	printf("%d,%d", a, b);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 答： 2,1,1,2
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+ 28. 
+ 
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void fot(int* p1, int* p2)
+{
+	printf("%d,%d\n",*(p1++),++*p2);
+}
+
+int x = 371, y = 269;
+int   main(void)
+{
+	fot(&x,&y);
+	fot(&x, &y);
+
+	system("pause");//xyt
+}
+
+
+
+ 
+ 
+ 
+ 
+ 答： 
+ 371,270
+371,271
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+     //*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+29 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define MAX(x,y,z) (x>y?(x>z?x:z):(y>z?y:z))
+
+int x = 371, y = 269;
+int   main(void)
+{
+	int a = 3, b = 4, c = 5;
+	printf("%d,",MAX(a,b,c));
+	printf("%d,", MAX(a*b,b,b+a));
+	printf("%d\n", MAX(a,b+c,a*c));
+
+	system("pause");//xyt
+}
+
+
+
+	 答：  5,12,15
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+程序填充题 
+	 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+30.   为二维数组输入数据，输出其中最小的元素值及对应的两个下标  
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define M 3
+#define N 4
+
+
+int   main(void)
+{
+	int a[M][N], i, j, row, col, min;//
+	for (i = 0;i < M;i++)
+		for (j = 0;j < N;j++)
+			scanf("%d",&a[i][j]); //1 2 3 4  10 20 30 40 100 200 0 400 
+	min = a[0][0];
+	row = col = 0; // 
+	for(i=0;i<M;i++)
+		for(j=0;j<N;j++)
+			if (a[i][j]<min)
+			{
+				min = a[i][j];//
+				row = i;
+				col = j;
+			}
+	printf("min=%d,row=%d,col=%d\n",a[row][col],row,col);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+31. 下列程序中，主函数 main 调用函数 LineMax, 求二维数组中每一行元素的最大值并输出  
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define M 3
+#define N 4
+
+void LineMax(int x[N][M])
+{
+	int i, j, max;
+	for ( i = 0; i < N; i++)
+	{
+		max = x[i][0];
+		for (j = 1;j < M;j++)
+			if (max < x[i][j])
+				max =x[i][j];//
+		printf("The max value in line %d is %d\n",i, max);//
+	}
+}
+
+int   main(void)
+{
+	int a[N][M] = { 1,2,7,4,2,6,4,3,8,2,3,1 };
+	LineMax(a);//
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+32.  下面的程序是使用结构体类型来计算复数m和n的差  
+
+
+
+
+	 #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int   main(void)
+{
+	struct comp
+	{
+		float re;float im;
+	};
+	struct comp m, n, z;//
+	 scanf("%f,%f,%f,%f",&m.re,&m.im,&n.re,&n.im);//11.1  11.2 12.1  12.2 
+	z.re = m.re-n.re;//
+	z.im = m.im-n.im ;//
+	printf("%6.2f + %6.2f\n",z.re,z.im);     //  c语言 %6.2f  6表示数据表示至少6位,后面的2表示小数点后保留两位  https://zhidao.baidu.com/question/1302286323165666059.html
+
+
+	system("pause");//xyt
+}
+
+
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	程序设计题
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+33. 从键盘输入一串字符， 以回车换行符为结束标志， 分别统计并输出英文字符和数字字符的个数  
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int   main(void)
+{
+	int c, ndigit, nchar;
+	nchar = 0;
+	ndigit = 0;
+	while ((c = getchar()) != '\n') // abc12ed
+		if (c >= '0' && c <= '9')
+			++ndigit;
+		else if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+			++nchar;
+
+	printf("Digit:%d\n",ndigit);
+	printf("Char:%d\n", nchar);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+34.  用指针方法实现： 输入8个整数， 将其中的最大数和最后一个数交换， 最小数和第1个数交换，然后将8 个整数倒序输出  	
+	 
+	 
+	 #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define N 8
+
+int   main(void)
+{
+	int a[N], * p = a, i, d, d1 = 0, x=0, x1 = 0;
+	for ( i = 0; i < N; i++,p++)
+	{
+		scanf("%d",p);//32 12 3 54 65 43 23 14 
+		if (i == 0) {
+			d = *p;
+			x = *p;
+		}
+		if (d < *p)
+		{
+			d = *p;
+			d1 = i;
+		}
+		else if (x>*p)
+		{
+			x = *p;
+			x1 = i;
+		}
+	}
+	p--;
+	a[d1] = *p;
+	*p = d;
+	a[x1] = *(p - 7);
+	*(p - 7) = x;
+	for (i = N - 1;i >= 0;i--,p--)
+		printf("%d ", *p);
+
+
+	system("pause");//xyt
+}
+
+
+
+	 
+	 
+	 
+	 全真模拟演练（五 ）
+	 
+	 
+	程序分析题  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+26. 	 
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	int i, a[5];
+	for (i = 0;i < 5;i++)
+		a[i] = 9 * (i - 2 + 4*(i > 2)) % 5;
+	for (i = 4;i >= 0;i--)
+		printf("%3d",a[i]);
+
+
+	system("pause");//xyt
+}
+
+
+	 
+	 答：   4  0  0 -4 -3
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+	 27 
+	 
+	 #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int fx(int n)
+{
+	int s;
+	if (n == 0) s = 0;
+	else s = n + fx(n-2);
+	return s;
+}
+
+int   main(void)
+{
+	printf("%d\n",fx(8));
+
+
+	system("pause");//xyt
+}
+
+
+	 答： 20
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+		 
+	//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+	 28 。
+	 
+	 #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+int   main(void)
+{
+	int i, a[5], * p;
+	for (i = 4;i >= 0;i--)
+		*(a + i) = i;
+	for (p = a;p < a + 5;p++)
+		printf("%d ",*p);
+	printf("\n");
+
+
+	system("pause");//xyt
+}
+
+
+
+	 
+	 答： 0 1 2 3 4 
+	 
+	 
+	 
+	 
+
+	 
+	 
+	 
+	 	 
+		 
+	//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+	29. 
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define PRI printf
+#define NL "\n"
+#define D "%d"
+#define D1 D NL 
+#define D2 D D NL 
+#define D3 D D D NL 
+#define D4 D D D D NL 
+#define S "%s"
+
+
+int   main(void)
+{
+	int a = 2, b = 3, c = 4, d = 5;
+	char s[] = "STRING";
+	PRI(D1,a);
+	PRI(D2, a,b);
+	PRI(D3, a,b,c);
+	PRI(D4, a,b,c,d);
+	PRI(S,s);
+
+
+	system("pause");//xyt
+}
+
+
+	
+答：	
+2
+23
+234
+2345
+STRING
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+	 	 
+	程序填充题 	 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+	30.  将8个数输入数组中，找出其中最大数和最小数并输出 
+	
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	int i, max, min, a[8];
+	for (i = 0;i < 8;i++)
+		scanf("%d",&a[i]); // 12 3 45 54 2 4 67 9
+	max = a[0];
+	min = a[0];
+	for (i = 1;i < 8;i++)
+	{
+		if (a[i] > max)
+			max =a[i] ;//
+		if (a[i] < min)
+			min = a[i];//
+
+	}
+	printf(" max=%d,min=%d\n",max,min ); // 
+
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+31.  设 x不等于0 切 y 为0 或正整数， 函数fun()计算并返回x的y次幂的值 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+double fun(double x, int y)
+{
+	int i;
+	double z;
+	if (y == 0)
+		z = 1.0;//
+	else
+		for (i = 1, z = x;i < y;i++)
+			z = z * x;// 
+	return z;// 
+
+}
+
+int   main(void)
+{
+	 
+	double d= fun(3.1,4);
+	printf("%f",d);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+	
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+32.  利用宏定义和函数求最大值 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define  MAX(a,b) ((a)>=(b)?(a):(b)) //
+
+
+int   main(void)
+{
+	int j, k;
+	printf("please input two integers:\n");// 4 7
+	scanf("%d%d",&j,&k);
+	printf("The max is %d\n",MAX(j,k)); // 
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+程序设计题： 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+33. 编写程序，输入一个 3*4 的矩阵和一个4*3 的矩阵， 分别存入数组 a 和 b , 然后求它们的乘积存入数组c ,输出数组c中的矩阵。 矩阵中的数据均为整型 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	int a[3][4], b[4][3], c[3][3], i, j, k;
+	for (i = 0;i < 3;i++)
+		for (j = 0;j < 4;j++)
+			scanf("%d", &a[i][j]);//1 1 1 1 2 2 2 2 3 3 3 3
+	for (i = 0;i < 4;i++)
+		for (j = 0;j < 3;j++)
+			scanf("%d", &b[i][j]);//1 2 3  10 20 30  100 200 300 1000 2000 3000
+	for (i = 0;i < 3;i++)
+		for (j = 0;j < 3;j++)
+		{
+			c[i][j] = 0;
+			for (k = 0;k < 4;k++)
+				c[i][j] += a[i][k] * b[k][j];
+		}
+	for (i = 0;i < 3;i++)
+	{
+		printf("\n");
+		for (j = 0;j < 3;j++)
+			printf("%10d", c[i][j]);
+	}
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+34.  编写程序， 要求输入两个数， 比较大小， 输出大数和小数 (用指针实现)
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	int a, b, *p1, *p2, *p;
+	 scanf("%d,%d",&a,&b); //13,7
+	p1 = &a;
+	p2 = &b;
+	if (a < b)
+	{
+		p = p1;
+		p1 = p2;
+		p2 = p;
+	}
+	printf("max=%d,min=%d\n",*p1,*p2);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+ 考前深度密押(一)
+ 
+程序分析题  写出输出结果
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+  26. 
+  
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{  
+	int a[2][2], i, j;
+	for(i=0;i<2;i++)
+		for (j = 0;j < 2;j++)
+		{
+			a[i][j] = i * j;
+			printf("%d\n",a[i][j]);
+		}
+
+	system("pause");//xyt
+}
+
+
+
+
+答： 
+0
+0
+0
+1
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  	
+27. 	
+	
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int sum(int n)
+{
+	if (n == 1)return 1;
+	else return n + sum(n - 1);
+}
+
+int   main(void)
+{  
+	printf("sum=%d\n",sum(10));
+
+	system("pause");//xyt
+}
+
+
+
+答： 
+sum=55
+
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  	
+	28. 
+	
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+
+int   main(void)
+{  
+	int a[] = { 1,2,3,4,5,6 };
+	int* p;
+	p = a;
+	*(p + 3) += 1;
+	printf("%d,%d\n",*p,*(p+3));
+
+
+	system("pause");//xyt
+}
+
+
+答：
+1,5  
+	
+	
+	
+	
+		
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+struct st
+{
+	int i;
+	int j;
+}*p;
+
+int   main(void)
+{  
+	struct st m[] = { {1,2},{5,10},{6,36} };
+	p = m;
+	printf("%d,%d\n",*p,*(p+3));
+
+
+	system("pause");//xyt
+}
+
+
+
+答： 1,2
+
+
+
+
+
+
+
+
+
+
+
+
+程序填充题 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+30.  下面程序要求输入2个字符串 ， 若两个字符串不完全相等，  以第一个不同字符为准，输出较小的一个。 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include "string.h"
+
+int   main(void)
+{  
+	char x[20], y[20];
+	int m;
+	printf("请输入第一个字符串:\n");
+	gets(x);
+	printf("请输入第二个字符串:\n");
+	gets(y);
+	m = strcmp(x,y) ;//
+	if (m == 0)
+		printf("两个字符串相等");
+	else if(m<0)
+		printf("%s", x);  //
+	else
+		printf("%s", y);  //
+
+	
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  
+31.  输入 n (n>=1) ,   计算 1 + (1 +2 ) + (1 +2 +3) + ... + (1 +3 + ... +n) 的值 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{  
+	int i, b;
+	long sum = 0;
+	long cal(int);
+	scanf("%d",&b);
+	for (i = 1;i <= b;i++)
+		sum = sum + cal(i); // 
+
+	printf("1 + (1 +2)+...+(1 + 2 +.. +b)=%ld\n",sum);
+
+	
+	system("pause");//xyt
+}
+
+
+long cal(int a) //
+{
+	static long s = 0;
+	s = s + a;
+	return s;//
+}
+
+
+	
+	
+	
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  	
+32.  统计文本文件 1.txt 中字符 'b'、'e' 、 'g' 、 'i'  和 'n'  各自出现的次数 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{  
+	char ch;
+	FILE *fp;
+	int b = 0, e = 0, g = 0, i = 0, n = 0;
+	fp = fopen("d:\\1.txt","r");
+	while (!feof(fp))
+	{
+		ch = fgetc(fp);
+		switch (ch)
+		{
+		case 'b':b++;break;
+		case 'e':e++;break;
+		case 'g':g++;break;
+		case 'i':i++;break;
+		case 'n':n++;
+		}
+	}
+
+	
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+程序设计题 	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  	
+33. 从键盘输入 10个整数， 计算并输出大于等于零的数的平均值 （保留小数点后2位）	
+	
+	 #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#define N 10
+
+int   main(void)
+{  
+	
+	int a[N], i, n = 0;
+	float sum = 0, aver;
+	for (i = 0;i < N;i++)
+		scanf("%d",&a[i]);//3 43 53 3 1 5 43 87 100 5
+	for(i=0;i<N;i++)
+		if (a[i] >= 0)
+		{
+			sum = sum + a[i];
+			n++;
+		}
+		
+	if (n == 0)
+		printf("All numbers are negative!\n");
+	else
+	{
+		aver = sum / n;
+		printf("aver=%7.2f\n",aver);
+	}
+		
+	
+	system("pause");//xyt
+}
+
+
+	
+	
+	
+	
+	
+	
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  *  	
+34. 编写程序输入 3 个学生的学号、姓名、3门课程的成绩，存入一个结构体类型的数组。 统计每个学生的总分并输出学生的学号、 姓名、 总分 
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int   main(void)
+{  
+	struct
+	{
+		long num;
+		char name[20];
+		float score1;
+		float score2;
+		float score3;
+		float total;
+	}stu[3];
+
+	int i;
+	float x1, x2, x3; 
+	for ( i = 0; i < 3; i++)
+	{//100 xyt 88,77,66 101 xyt1 32,45,67 102 xyt2 76,45,56 
+		scanf("%ld,%s",&stu[i].num,stu[i].name); // %ld 输出long整数 。 
+		scanf("%f,%f,%f",&x1,&x2,&x3);
+		stu[i].score1 = x1;
+		stu[i].score2 = x2;
+		stu[i].score3 = x3;
+	}
+	for (i = 0;i < 3;i++)
+		stu[i].total = stu[i].score1 + stu[i].score2 + stu[i].score3;
+
+	for (i = 0; i < 3; i++)
+		printf("num:%ld name:%s total:%f\n",stu[i].num,stu[i].name,stu[i].total);
+	
+	
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
