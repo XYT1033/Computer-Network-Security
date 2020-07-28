@@ -1454,16 +1454,164 @@ int   main(void)
    
 
 
-
+ 考前深度密押( 二 )
+ 
+  1. 使用高级语言编写的程序称为：  源程序  ， 源程序无法在机器上直接运行，必须将其翻译为二进制程序后才可以执行。 
+  
+  4. 设 int a=2,b=3,c=4; 则表达式 a>b&&a<c||b 的值是： 1 
+解析：  因表达式中含有 "||" 故有一个表达式结果为真即可， a<c 为真， 故表达式即为真。 即值为1    
  
 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+    int a = 2, b = 3, c = 4;
+
+
+    int  iu = a > b && a < c || b;
+    printf("%d", iu);
+
+
+	system("pause");//xyt
+}
+
+
+
+
+5.  设 int a =3;    ,执行语句 printf("%d\n",a+(a-= a*a));   后输出结果是：     -12  
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+    int a = 3;
+
+    // printf("%d\n", a -= a * a); //xyt 
+    printf("%d\n", a + (a -= a * a));
+
+
+	system("pause");//xyt
+}
+
+
+
+
+6.  continue 语句不能用于的语句是：  
+A .  switch 
+C    do-while 
+答：  A        break 语句能用于三种循环语句和switch 语句， continue 语句只能用于三种循环语句。 
 
 
 
 
 
+8.  为了判断两个字符串 s1 和 s2 是否相等，应当使用：  if(strcmp(s1,s2)==0) 
+	
+
+9. 函数 int fun(){return(8.8);}  的返回值是 ；  8
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+int fun() { 
+    return(8.8);
+}
+int   main(void)
+{
+    int x= fun();
+    printf("%d",x);
 
 
+	system("pause");//xyt
+}
+
+
+
+11. 设 char * str[3];    ,则标识符 str 的含义是：   一个具有三个元素的一维指针数组 
+
+
+
+
+12. 结构体类型指针变量指向数组时， 可以使用以下几种方式来引用其成员：  (*指针变量).成员名  、    指针变量->成员名    、
+(*(指针变量+k)).成员名           、 (指针变量+k)->成员名。  
+
+
+
+
+13.   在文件包含预处理命令的使用形式中，  #include  后面的 文件名用双引号括起时， 寻找被包含文件的方式是 ；  
+  现在源程序所在目录搜索，  再按系统设定的标准方式搜索  
+  
+  
+  14.   fread(buf,32,2,fp) 的功能是 ：  从 fp 文件流中读出2个 32 个字节的字符，并存放在 buf 中 。
+  
+  
+  
+  
+15.   函数 fscanf()的调用形式是：  fscanf(文件指针,格式字符串,输入列表) 
+
+
+
+16.  20世纪50年代末期，出现的第二代计算机是由  晶体管 为主要元件  
+18.   一个字符型变量所占内存的字节数是： 1 
+
+19. c 语言中， break 语句的功能是  ： 强制结束当前循环  
+
+20 。  以下程序段的输出结果是：    1 -2
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+    int x = 3;
+	do
+	{
+		printf("%3d", x-=2); //%3d表示输出3位整型数，不够3位右对齐。		https://zhidao.baidu.com/question/298786257.html
+	} while (!(--x));
+    
+
+
+	system("pause");//xyt
+}
+
+
+
+
+21. 设 float a[6][4];     ,则数组a 中第一维下标的最大值是：    5 
+
+
+
+22.  表达式 islower(c)  的值是 ： 1 
+
+23.   设 char * st="China,Beijing";      ,执行语句 printf("%s\n",st+6);  后的输出结果是：  Beijing
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	char* st = "China,Beijing";
+	printf("%s\n", st + 6);
+
+	system("pause");//xyt
+}
+
+
+
+
+25.  在缓冲文件系统中， 对文件的读/写 是通过：   (缓冲区)  实现的。 
+
+
+
+   done ... 
 
 
 

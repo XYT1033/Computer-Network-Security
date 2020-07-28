@@ -3383,10 +3383,371 @@ int   main(void)
 
 
 
+ 考前密押(二)
+
+请写出输出结果  
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+26.  	
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+int z = 2;
+int fun(int x)
+{
+	static int y = 0;
+	return (--y+x+z);
+}
 
 
+int   main(void)
+{
+	int i;
+	for (i = 1;i <= 3;i++)
+		printf("%d*",fun(5));
+	printf("\n");
+
+	system("pause");//xyt
+}
+
+
+	
+	答：   6*5*4*
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+27.  
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void f(int x, int* y)
+{
+	*y += ++x;
+}
+
+
+int   main(void)
+{
+	int a = 7, b = 8;
+	f(a,&b);
+	printf("a=%d,b=%d\n",a,b);
+
+	system("pause");//xyt
+}
 
 
 	
 	
+	
+	
+	答： a=7,b=16
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+28
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+struct node
+{
+	int num;
+	struct node* next;
+
+}*p, x[3] = {1,x+1,2,x+2,3,NULL};
+
+int   main(void)
+{
+	p = x;
+	printf("%d%d",p->num,p->next->num);
+
+	system("pause");//xyt
+}
+
+
+答： 1,2 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+	29.  D 盘中 1.txt 文件的内容为 ： abcde       , 2.txt 为空文档  
+	
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include<stdlib.h>
+
+int   main(void)
+{
+	FILE  *f1, *f2;
+	int k;
+	if ((f1=fopen("D:\\1.txt","r")) ==NULL)
+	{
+		printf("can not open file!\n");
+		exit(0);
+	}
+	if ((f2 = fopen("D:\\2.txt", "w")) == NULL)
+	{
+		printf("can not open file!\n");
+		exit(0);
+	}
+	for ( k = 0; k <= 500; k++)
+	{
+		if (feof(f1)) break;
+		fputc(fgetc(f1),f2);
+	}
+	printf("复制成功");
+	fclose(f1);
+	fclose(f2);
+
+	system("pause");//xyt
+}
+
+
+	答： 复制成功
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	程序填充题 
+	//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+	30 。   下列程序的功能是 从键盘上输入若干员工的工资，统计并输出最高工资和最低工资，当输入负数时结束输入 。 
+	
+	
+	#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	float x, max, min;
+	scanf("%f",&x);  // 400 500 300 323 100 320  430 -4
+	max = min = x; // 
+	while (!(x<0))  //或 x>=0.0
+	{
+		if (x > max) max = x;
+		if (x < min) min = x;
+		scanf("%f",&x);// 
+	}
+
+	printf("\nmax=%f\nmin=%f\n",max,min);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+31. 以下程序的功能为：  从键盘输入若干学生的成绩， 计算出平均值， 并输出低于平均值的学生成绩，   输入为负数时结束输入 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+int   main(void)
+{
+	float x[6], sum = 0.0, ave, a;
+	int n = 0, i;
+	printf("please input the mark:\n");
+	scanf("%f", &a); // 89 43 55 76 44 49 100
+	while (a > 0.0 && n < 6)
+	{
+		sum += a;//
+		x[n] = a;
+		n++;
+		scanf("%f", &a);
+	}
+	ave = sum / n;//
+	printf("output:\n");
+	printf("ave=%f\n", ave);
+	for (i = 0;i < n;i++)
+		if (x[i] < ave) //
+			printf("%f\n", x[i]);
+
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+32  函数 f() 的主要功能是求 p 指向的 m 行5列数组中的最大数与最小数， 并通过形参指针变量 max 和 min 返回 。 
+
+
+ #define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+
+void f(float* p, float* max, float* min, int m) //
+{
+	int i, j;
+	*max = *min = *p;//
+	for (i = 0;i < m;i++)
+		for (j = 1;j < 5;j++)
+		{
+			if (*max < *(p + i * 5 + j))
+				*max = *(p + i * 5 + j);//
+			if (*min > * (p + i * 5 + j))
+				*min = *(p + i * 5 + j);
+		}
+}
+
+int   main(void)
+{
+
+	float a1 = 3.4,  a2 = 3.41, a3 = 3.42;
+	int m = 3;
+	f(&a1, &a2, &a3, m);
+
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+程序设计题 
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+33.  1. 编写函数 fa, 计算并输出直角三角形的面积  
+2. 编写函数 fb,计算并输出梯形的面积 
+3. 编写主函数， 键入直角三角形的底(d) 和 高(h) , 调用函数 fa 计算并输出该直角三角形的面积； 键入梯形的上底(a) 、 下底(b) 和高(c) ,
+调用函数 fb 计算并输出该梯形的面积。 (输出结果保留两位小数)
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+float fa(float d, float h)
+{
+	//输出 直角三角形 的面积
+	return d * h / 2;
+}
+float fb(float a, float b, float c)
+{
+	//输出 梯形 的面积
+	return (a + b) * c / 2;
+}
+
+
+
+int   main(void)
+{
+
+	float d1, h1, a1, b1, c1;
+	scanf("%f %f %f %f %f",&d1,&h1,&a1,&b1,&c1);//2 3 4 5 6
+	printf("直角三角形面积=%.2f\n",fa(d1,h1));
+	printf("梯形面积=%.2f\n", fb(a1, b1,c1));
+
+	system("pause");//xyt
+}
+
+
+
+
+
+ 
+
+
+
+	
+//*  *  *   *  *  *  *  *  *   *  *  *  *  *  *   *  *  * 
+34. 从键盘输入一串 字符( 以#作为结束标志) 显示到屏幕上并写入文本文件 1.txt 	
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+#include <stdlib.h>
+int   main(void)
+{
+	char c;
+	FILE * fp;
+	if ( (fp = fopen("D:\\1.txt", "w")) ==NULL)
+	{
+		printf("error\n");
+		exit(0);
+	}
+	c = getchar();
+	while (c!='#')
+	{
+		putchar(c);
+		fputc(c,fp);
+		c = getchar();
+	}
+	printf("\n");
+	fclose(fp);
+
+	system("pause");//xyt
+}
+
+
+
+ done .... 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 	
