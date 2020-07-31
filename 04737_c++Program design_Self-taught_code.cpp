@@ -14,7 +14,7 @@ void main()
 {
 	int x = 32, y = 37;
 	const int* p = &x;
-	*p = y;  // p为只想常量的指针，不能将 *p 作为左值进行操作。 可修改为 p = &y;
+	*p = y;  // p为指向常量的指针，不能将 *p 作为左值进行操作。 可修改为 p = &y;
 	cout << *p << endl;
 
 	system("pause");
@@ -829,7 +829,444 @@ void main()
   
   
     
+	
+	
+  // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+	47. 
+	
+	#include <iostream>
+using namespace std;
+
+class A
+{
+private:
+	int X, Y;
+public :
+	A() {
+
+		X = Y = 0;
+	}
+	A(int xx, int yy) :X(xx), Y(yy) {
+
+	}
+	A(A& a) {
+		X = a.X; 
+		Y = a.Y;//
+	}
+	int GetX() {
+		return X;
+	}
+	int GetY() {
+		return Y;
+	}
+	void SetXY(int x, int y) {
+		X = x;
+		Y = y;
+	}
+
+};
+
+
+void main()
+{
+	A* Ptr = new A[2];
+	Ptr[0].SetXY(5,10);
+	Ptr[1].SetXY(15,20);
+	cout << "Release Ptr..." << endl;
+	delete[] Ptr;// 释放动态分配内存
+
+	system("pause"); //xyt
+
+}
+
+
   
   
   
+  
+  
+  
+  
+  
+  
+    // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+	48. 
+	
+	#include <iostream>
+using namespace std;
+
+class point {
+private :
+	int x, y;
+public:
+	point(int, int);
+	point(point&);
+};
+point::point(int a, int b)
+{
+	x = a;
+	y = b; // 
+}
+point::point(point& z)//
+{
+	x = z.x;
+	y = z.y;
+}
+
+
+void main()
+{
+
+	point p1(2,3);
+	point p2(p1);
+
+
+	system("pause"); //xyt
+
+}
+
+
+	
+	
+	
+	
+	
+	
+	
+// ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+49 
+	
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+class dis
+{
+private:
+	double x, y;
+public :
+	dis(double x1,double y1) { //
+		x = x1;
+		y = y1;
+	}
+	double getx() {
+		return x;
+	}
+	double gety() {
+		return y;
+	}
+	static double log(dis&,dis&); //
+};
+
+double dis::log(dis& a, dis& b) {
+	double px = a.x - b.x;
+	double py = a.y - b.y;
+	return sqrt(px*px+py*py);
+}
+
+
+void main()
+{
+	dis p1(3.5, 4.5), p2(5.5,6.5);
+	double d = dis::log(p1,p2);
+	cout << "The distance is " << d;
+
+
+
+	system("pause"); //xyt
+
+}
+
+
+	
+	
+  
+  
+  // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+50. 在下面程序横线处填上适当内容， 使陈谷执行结果为： Y=1,Y=3,Z=5  
+
+
+
+#include <iostream>
+
+using namespace std;
+
+class B
+{
+private:
+	int Y;
+public:
+	B(int y = 0)
+	{
+		Y = y;
+	}
+	void print() {
+		cout << "Y=" << Y << ",";
+	}
+};
+
+class D:public B
+{
+private:
+	B b;
+	int Z;
+public:
+	D(int x, int y, int z) :B(x), b(y) {
+		Z = z;
+	}
+	void print()
+	{
+		B::print();//打印基类B中的成员Y
+		b.print();//打印类成员b中的Y值
+		cout << "Z=" << Z << endl;
+	}
+};
+
+
+void main()
+{
+	D d(1,3,5);
+	d.print();
+
+
+
+	system("pause"); //xyt
+
+}
+
+
+
+
+  
+  
+  
+  
+  程序分析题  给出下面程序的输出结果
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 51.  
+  
+  
+  #include <iostream>
+
+using namespace std;
+
+class A
+{
+private:
+	int a;
+public:
+	void set(int x) {
+		a = x;
+	}
+	void show() {
+		cout << "a=" << a << ",";
+	}
+};
+class B :public A
+{
+private:
+	int b;
+public:
+	void set(int x = 0) {
+		A::set(x);
+		b = x + 10;
+	}
+	void set(int x, int y) {
+		A::set(x);
+		b = y;
+	}
+	void show() {
+		A::show();
+		cout << "b=" << b << endl;
+	}
+};
+
+
+
+void main()
+{
+	B b;
+	b.set(10);
+	b.show();
+	b.set(30,50);
+	b.show();
+
+
+	system("pause"); //xyt
+
+}
+
+
+  
+答： 
+a=10,b=20
+a=30,b=50
+
+
+
+
+
+
+
+
+
+
+
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 52 
+#include <iostream>
+
+using namespace std;
+
+
+class A
+{
+public:
+	A() {
+		a1 = 0;
+	}
+	A(int i) {
+		a1 = i;
+	}
+	void printout() {
+		cout << a1;
+	}
+
+private:
+	int a1;
+
+};
+class B :public A {
+public:
+	B() {
+		b1 = 0;
+	}
+	B(int i, int j, int k);
+	void printout();
+
+private:
+	int b1;
+	A aa;
+};
+B::B(int i, int j, int k) :A(i), aa(j)
+{
+	b1 = k;
+}
+void B::printout()
+{
+	A::printout();
+	cout << endl;
+}
+
+
+void main()
+{
+	B tt[2];
+	tt[0] = B(9,3,5);
+	tt[1] = B(8,4,7);
+	for (int i = 0;i < 2;i++)
+		tt[i].printout();
+
+
+	system("pause"); //xyt
+
+}
+
+
+
+
+
+ 答： 
+ 9
+8
+
+
+
+
+
+
+
+
+
+
+
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 
+53.  有两个矩阵 a 和 b ,都是2 行3列 。 求两个矩阵之和。 重载运算符 "+" ,使之能用于矩阵相加。 如 c=a+b  
+
+#include <iostream>
+
+using namespace std;
+
+class Mx
+{
+public :
+	Mx();
+	friend Mx operator+(Mx &,Mx &);
+	void input();
+	void show();
+private:
+	int m[2][3];
+};
+Mx::Mx()
+{
+	for (int i = 0;i < 2;i++)
+		for (int j = 0;j < 3;j++)
+			m[i][j] = 0;
+};
+Mx operator +(Mx & a, Mx & b)
+{
+	Mx c;
+	for (int i = 0;i < 2;i++)
+		for (int j = 0;j < 3;j++)
+			c.m[i][j] = a.m[i][j] + b.m[i][j];
+	return c;
+}
+void Mx::input()
+{
+	cout << "输入矩阵的值：" << endl;
+	for (int i = 0;i < 2;i++)
+		for (int j = 0;j < 3;j++)  // 12 13 14 15 16 17 
+			cin >> m[i][j];// 2 3 4 5 6 7 
+}
+void Mx::show()
+{
+	for (int i = 0;i < 2;i++)
+	{
+		for (int j = 0;j < 3;j++)
+			cout << m[i][j] << " ";
+		cout << endl;
+	}
+}
+
+void main()
+{
+	Mx a, b, c;
+	a.input();
+	b.input();
+	cout << endl << "矩阵a:" << endl;
+	a.show();
+	cout << endl << "矩阵b:" << endl;
+	b.show();
+	c = a + b;
+	cout << endl << "矩阵c = 矩阵a + 矩阵b" << endl;
+	c.show();
+
+	system("pause"); //xyt
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
