@@ -30,10 +30,42 @@ D.    0x7&7
 
 
 
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void main() // 
+{
+
+	printf("%d\n", 0x7 & 7);
+	printf("%d\n", 5 / 5 % 5);
+	printf("%d\n", !4);
+
+	system("pause");//xyt
+}
+
+
+
+
+
+
 
 12. 设 int a =1,b=2,c=3,d=4,f; 
 执行语句 f=(a! =b)?c++:d++;
 后f的值是： 3  
+
+
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void main() // 
+{
+	int a = 1, b = 2, c = 3, d = 4, f;
+	f = (a!= b) ? c++ : d++;
+	printf("%d", f);
+
+	system("pause");//xyt
+}
 
 
 
@@ -81,6 +113,20 @@ D.    0x7&7
 
 25.  执行语句 x=5;if(x!=0) x=1; 后,变量x的值是：       1 
 
+
+#define _CRT_SECURE_NO_WARNINGS   //xyt 
+#include<stdio.h>
+
+void main() // 
+{
+	int x = 5;
+	if (x != 0)
+		x = 1;
+
+	printf("%d",x);
+
+	system("pause");//xyt
+}
 
 
 

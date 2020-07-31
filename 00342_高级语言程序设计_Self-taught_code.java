@@ -24,6 +24,7 @@ int main()
 
 	}
 	printf("i=%d,j=%d\n", i, j);
+	system("pause");//xyt
 }
 
 
@@ -158,7 +159,7 @@ int main()
 	for (i = 0; i <=99; i++) //
 	{
 		m = i * 10 + 5;
-		if (i%7!=0)
+		if (m%7!=0)
 			continue;  //
 
 
