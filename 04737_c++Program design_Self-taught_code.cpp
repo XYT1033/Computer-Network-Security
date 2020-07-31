@@ -1,4 +1,4 @@
-
+ 
 
 
 单元测试(一) 
@@ -233,7 +233,7 @@ void main()
 	for (i = 0; i < 3; i++)
 		cout << q[i] << endl;
 
-	system("pause");
+	system("pause"); //xyt
 }
 
 
@@ -290,7 +290,7 @@ void main()
 
 		
 
-	system("pause");
+	system("pause"); //xyt
 }
 
 
@@ -319,7 +319,7 @@ void main()
 	cout << "fun:1" << (*fp)(i) << endl;
 		
 
-	system("pause");
+	system("pause"); //xyt
 }
 
 int fun1(int k)
@@ -382,7 +382,7 @@ void main()
 	}
 	
 
-	system("pause");
+	system("pause"); //xyt
 }
 
 
@@ -418,7 +418,7 @@ void main()
 	cout << num << endl;
 	
 
-	system("pause");
+	system("pause"); //xyt
 }
 
 
@@ -453,7 +453,7 @@ void main()
 {
 	cout << min(1, min(2, 3)) << endl;
 
-	system("pause");
+	system("pause"); //xyt
 }
 
   
@@ -513,9 +513,323 @@ void main()
 
 
 
-	system("pause");
+	system("pause"); //xyt
 }
 
    
   
 
+
+  
+  
+    
+  单元综合测试(二)
+  改错题 
+ // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+  41. 
+  
+  
+  #include <iostream>
+using namespace std;
+
+class A {
+
+public :
+	virtual ~A()
+	{
+	
+	}
+
+	virtual void f()
+	{
+		cout << "A::f()" << endl;
+	}
+
+	virtual void g()
+	{
+		cout << "A::g()" << endl;
+	}
+
+};
+
+class B :public A
+{
+public:
+	virtual void g()
+	{
+		cout << "B ::g()" << endl;
+	}
+	virtual void k()
+	{
+		cout << "B ::k()" << endl;
+	}
+};
+void main()
+{
+	A* p = new B;
+	p->f();
+	p->g();
+	p->k();   // 错误 ，  在类 A 中无 k()函数  。 可在类A 中增加 k() 函数的定义 
+	delete p;
+	
+	system("pause"); //xyt
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 42 
+  
+  
+  #include <iostream>
+using namespace std;
+
+class Add
+{
+private:
+	int sum;
+public :
+	void plus(int,int);
+
+};
+void Add::plus(int x, int y)
+{
+	sum = x + y;
+}
+
+
+void main()
+{
+	Add add;
+	add.plus(2,3);
+	cout << add.sum << endl;    //  sum 是私有成员， 在外部无法访问。 应修改 sum 访问权限为 public 类型 
+	system("pause"); //xyt
+
+}
+
+
+
+
+
+
+
+
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 43 
+
+
+  #include <iostream>
+using namespace std;
+
+class Point
+{
+protected:
+	int x, y;
+public :
+	Point(int i, int j)
+	{
+		x = i;
+		y = j;
+	}
+	void Showxy()
+	{
+		cout << "x=" << x << ",y=" << y << end;
+	}
+	~Point() {
+		cout << "Delete Point" << endl;
+	}
+
+};
+
+void main()
+{
+	Point a; // Point类中有构造函数，系统不再自动产生无参构造函数。  可以在声明对象向的同时给定初始值，如 Point a(0,0);
+
+	system("pause"); //xyt
+
+}
+
+
+
+
+
+
+
+
+
+
+
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 44 
+
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+	void f()
+	{
+		cout << "a.f()" << endl;
+
+	}
+
+};
+
+class B
+{
+public :
+	void f() {
+		cout << "b.f()" << endl;
+	}
+	void g() {
+		cout << "b.g()" << endl;
+	}
+};
+
+class C:public A, public B
+{
+private:
+	int b;
+public :
+	void g()
+	{
+		cout << "c.g()" << endl;
+
+	}
+};
+
+
+void main()
+{
+	C obj;
+	obj.f(); // 调用函数f 产生歧义， 所以应明确指出调用哪个基类的函数。 应改为 obj.A::f();  或者 obj.B::f();  
+	obj.g();
+
+
+
+	system("pause"); //xyt
+
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+// ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+45 
+  
+  #include <iostream>
+using namespace std;
+
+class A {
+	int i;
+public :
+	virtual void fun()
+	{
+		cout << "A:fun()" << endl;
+
+	}
+	A(int a)
+	{
+		i = a;
+	}
+
+};
+
+
+class B:public A {
+	int J;
+public:
+	void fun()
+	{
+		cout << "B:fun()\n";
+	}
+	B(int b, int c)  // 建立派生类对象调用基类构造函数，但是基类没有无参构造函数。  应该为 B(int b,int c):A(b){j=c;}
+	{
+		j = c;
+	}
+
+};
+
+void main()
+{
+	A* p;
+	B b(3,5);
+	p = &b;
+	p->fun();
+
+	system("pause"); //xyt
+
+}
+  
+  
+  
+  
+  
+  
+  
+  // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+46 
+  
+  
+  #include <iostream>
+using namespace std;
+
+class A
+{
+public :
+	void f(int i)
+	{
+		cout << i << endl;
+	}
+	void g()
+	{
+		cout << "g\n";
+	}
+};
+class B : public A  // 
+{
+public :
+	void h()
+	{
+		cout << "h\n";
+	}
+};
+
+void main()
+{
+	B b;
+	b.f(6);
+	b.h();//
+
+	system("pause"); //xyt
+
+}
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
