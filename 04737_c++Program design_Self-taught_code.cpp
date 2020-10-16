@@ -33,6 +33,7 @@ void main()
 42. 
 
 
+
 #include <iostream>
 using namespace std;
 
@@ -40,10 +41,17 @@ class A
 {
 private:
 	int x, y;
-public :
-	void f1(int i = 0, int j = 0) { x = i;y = j; }
-	void printf() {cout<<x<<" "<<y<<endl;};
-	void f1(int i = 0) { x = i, y = 0; }
+public:
+	void f1(int i = 0, int j = 0) { 
+		x = i;
+		y = j;
+	}
+	void printf() { 
+		cout << x << " " << y << endl; 
+	};
+	void f1(int i = 0) {
+		x = i, y = 0;
+	}
 
 };
 
@@ -58,7 +66,7 @@ void main()
 	system("pause");
 }
 
- 
+
 
 
 
@@ -74,13 +82,17 @@ using namespace std;
 
 class MyClass
 {
-public :
-	MyClass(int i = 0) { member = i; }
+public:
+	MyClass(int i = 0) { 
+		member = i; 
+	}
 	void SetMember(const string m) {
 		member = "big" + m;
 		m = member; //const 修饰的形参不能改变。 应删去 const 或者删去 m=member 
 	}
-	string GetMember() { return member; }
+	string GetMember() { 
+		return member; 
+	}
 	void print()const {
 		cout << "Stu:" << member << endl;
 	}
@@ -1257,6 +1269,325 @@ void main()
 }
 
 
+
+
+
+
+
+
+
+
+
+全真模拟演练(一)    
+改错题 
+41   
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 
+#include <iostream>
+
+using namespace std;
+
+class A {
+public :
+	A(int i = 8) :y(i) {
+
+	}
+	static int x;
+	int y;
+};
+int x = 20;//对类成员初始化          静态数据成员初始化，需要在类外进行，格式错误。 应改为int A::x=20;
+
+
+
+void main()
+{
+	A a;
+	cout << a.x << "," << a.y << endl;
+
+	system("pause"); //xyt
+
+}
+
+
+
+ 
+ 
+ 
+ 
+ 
+// ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 42 
+ 
+ #include <iostream>
+
+using namespace std;
+
+class A
+{
+	int a, b;
+	const int c;
+public :
+	A() :c(0), a(0), b(0) {
+
+	}
+	A(int aa, int bb) :c(aa + bb)
+	{
+		a = aa;
+		b = bb;
+	}
+	void show()
+	{
+		cout << "Const c:" << c << endl;
+		cout << "a,b" << a<< b << endl;
+	}
+};
+
+void main()
+{
+	A a, b(1,2);
+	A* x = &a;
+	x.show(); //  x是指针引用成员有两种方法：一是利用指向运算符"->",二是使用成员运算符"."        应改为x->show();   或者(*x).show();
+	b.show();
+
+	system("pause"); //xyt
+
+}
+
+
+ 
+ 
+ 
+ 
+  
+// ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 43 
+ 
+ 
+ #include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+//运行程序，从键盘上输入 "This is a C++ prog!"后输出到一个文件中，并显示在屏幕上，显示结果： This is a C++ prog!
+
+void main()
+{
+	char str[20];
+	ofstream outf("D:\\1.txt",ios::trunc);
+	cin >> str; // 使用cin进行输入时空格也是作为结束符，所以str数组不能接收完整的字符串。 应改为 cin.getline(str,20);
+	outf << str;
+	outf.close();
+	int i = 0;
+	while (str[i]!='\0')
+	{
+		cout << str[i]; // This is a C++ prog!
+		i++;
+	}
+	cout << endl;
+	
+	system("pause"); //xyt
+
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+
+ 44 . 
+ 
+ 
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class A
+{
+public:
+	A(const char* na) {
+		strcpy(name, na);
+	}
+  // 因为name 如果是私有的，在派生类中无法访问，而基类没有提供成员函数来访问 name,所以更改 name 访问权限为公有或保护，这样对于派生类来说是透明的。 应改为 public: 或 protected: 
+private:
+	char name[80];
+};
+class B :public A
+{
+public:
+	B(const char* nm) :A(nm) {
+		
+	}
+
+	void show();
+};
+void B::show()
+{
+	cout << "name:" << name << endl;
+}
+
+
+void main()
+{
+	B b1("B");
+	b1.show();
+
+	system("pause"); //xyt
+
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+45.  
+ 
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+
+class A
+{
+private:
+	int x;
+public :
+	A(int i) {
+		x = i;
+	}
+	A() {
+		x = 0;
+	}
+	friend int min(A&,A&);
+	int min(A& a, A& b)
+	{
+		return (a.x < b.x) ? a.x:b.x;
+	}
+};
+
+void main()
+{
+	A a(3), b(5);
+	cout << a.min(a, b) << endl; //友元函数不是类成员，所以对象a不能使用 a.min(a,b) 这种方法。  min 就是一个普通的友元函数， 应改为 cout<<min(a,b)<<endl;
+
+	system("pause"); //xyt
+
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+   // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+   46. 
+   
+   
+   #include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class vehicle
+{
+protected:
+	int size;
+	int speed;
+public :
+	void set(int s) {
+		speed = s;
+	}
+	virtual int get() {// 
+		return speed / 10;
+	}  
+
+};
+class car :public vehicle
+{
+public :
+	int get() {
+		return speed;
+	}
+};
+class truck :public vehicle {
+public:
+	int get() {
+		return speed / 2;
+	}
+};
+int max(vehicle &v1, vehicle &v2) //
+{
+	if (v1.get() > v2.get())
+		return 1;
+	else
+		return 2;
+}
+
+void main()
+{
+
+	truck t;
+	car c;
+	t.set(160);
+	c.set(80);
+	cout<<max(t,c)<<endl; //此结果输出为2 
+
+	system("pause"); //xyt
+
+}
+
+
+   
+   
+   
+   
+     // ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** ***   ****   ***** 
+ 47 .
+ 
+ #include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+
+class A
+{
+	int a, b;
+public:
+	A(int i=0,int j=0)	//定义构造函数，使参数i 和 j 的默认值为0 
+	{
+		a = i;
+		b = j;
+	}
+};
+
+void main()
+{
+	A* p;
+	p = new A(4,5); //调用带参构造函数生成由p指向的动态对象
+	//使a和b成员分别被初始化为4和5 
+
+	system("pause"); //xyt
+
+}
 
 
 

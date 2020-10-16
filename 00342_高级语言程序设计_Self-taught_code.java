@@ -533,14 +533,14 @@ void main()
 	{
 		for (j = 0;j < N;j++)
 		{
-			scanf("%d",&t1[i][j]);   //
+			scanf("%d",&t1[i][j]);   // 1,2,3 10,20,30
 			printf("%5d",t1[i][j]);
 			t2[j][i] = t1[i][j];     //
 		}
 		printf("\n");
 	}
 	printf("二维数组t2:\n");
-	for (i = 0;i <N ;i++)         //
+	for (i = 0;i <N ;i++)         
 	{
 		for (j = 0;j < M;j++)
 			printf("%5d",t2[i][j]);
@@ -568,6 +568,7 @@ void main()
 {
 	int t1[M][N] = { {1,2,3},{10,20,30} }, t2[N][M], i, j;
 
+	printf("二维数组t1:\n");
 	for (i = 0;i < M;i++)
 	{
 		for (j = 0;j < N;j++)
@@ -685,6 +686,7 @@ void   main()
 
 
 
+
 #define _CRT_SECURE_NO_WARNINGS   //xyt 
 #include<stdio.h>
 
@@ -695,17 +697,18 @@ int   main()
 	int i, m;
 	float a[10], total = 0.0, ave, max;
 	for (m = 0;m < 10;m++)
-	scanf("%f", &a[m]);//输入
+		scanf("%f", &a[m]);//输入 23 54 22 88 2 43 56 6 345 44
 	printf("\n");
 	max = a[0];
 
 	for (i = 0;i < 10;i++)
 	{
 		total += a[i];//求和
-		if (a[i] > max)max = a[i];//求最大值
+		if (a[i] > max)
+			max = a[i];//求最大值
 	}
 	ave = total; // 10;//求平均值
-	printf("max=%f,ave=%f\n",max,ave);
+	printf("max=%f,ave=%f\n", max, ave);
 
 	system("pause");//xyt
 }
@@ -734,7 +737,7 @@ int   main()
 		total += a[i];//求和
 		if (a[i] > max)max = a[i];//求最大值
 	}
-	ave = total; // 10;//求平均值
+	ave = total/10; //求平均值
 	printf("max=%f,ave=%f\n", max, ave);
 
 	system("pause");//xyt
@@ -767,7 +770,7 @@ int   main()
 {
 	
 	float s1, x1, h1;
-	scanf("%f%f%f",&s1,&x1,&h1);
+	scanf("%f%f%f",&s1,&x1,&h1); //2.0 3.0 4.1
 	printf("area=%7.2f\n",area(s1,x1,h1));
 
 	system("pause");//xyt
@@ -919,7 +922,7 @@ int   main()
 {
 	FILE* fp;
 	int i, x[5] = {1,2,3,4,5};
-	fp = fopen("text.dat","w+");
+	fp = fopen("d:\\1.txt", "w+");
 	for (i = 0;i < 5;i++)
 		fprintf(fp,"%d\n",x[i]);
 	rewind(fp);
